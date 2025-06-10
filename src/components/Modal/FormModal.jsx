@@ -3,7 +3,7 @@ import './Form.css';
 import { Button } from '@mui/material';
 
 
-function Form({setFunction}){
+function Form({handleClose}){
     const [formData,setFormData] = useState({
         username: '',
         email: '',
@@ -47,17 +47,19 @@ function Form({setFunction}){
             return false;
         }
 
-        if(!checkEmail(formData.email)){
+        else if(!checkEmail(formData.email)){
             alert('Invalid email. Please check your email address.')
             return false;
         }
 
-        if(!checkDate(formData.dob)){
+        else if(!checkDate(formData.dob)){
             alert("Invalid date of birth. Date of birth cannot be in the future.");
             return false;
         }
 
-        setFunction(false);
+        else {
+            handleClose();
+        }
     };
 
     return(

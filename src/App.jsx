@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import {Modal,Button,Box} from '@mui/material';
+import {Button} from '@mui/material';
 import Form from './components/Modal/FormModal';
+import './App.css';
 
 function App(){
 
@@ -8,6 +9,10 @@ function App(){
 
   const handleOpen = () => {
     setIsModalOpen(true);
+  }
+
+  const handleClose = () => {
+    setIsModalOpen(false);
   }
   return (
     <div>
@@ -20,16 +25,15 @@ function App(){
             Open Form
       </Button>
 
-      <Modal
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        // disableBackdropClick={false}
-        // hideBackdrop={false}
-      >
-        <Box>
-          <Form setFunction={setIsModalOpen}/>
-        </Box>
-      </Modal>
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={handleClose}>
+          <div 
+            onClick={(e) => e.stopPropagation()}
+          >
+              <Form handleClose={handleClose} /> 
+          </div>
+        </div>
+      )}
     </div>
   )
 }
