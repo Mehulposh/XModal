@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Modal} from '@mui/material';
+import {Modal,Button} from '@mui/material';
 import Form from './components/Modal/FormModal';
 
 function App(){
@@ -13,12 +13,22 @@ function App(){
     <div>
        <h1>User Details Modal</h1>
 
-       <button onClick={handleOpen}>Open Form</button>
+       <Button
+         onClick={handleOpen}
+         variant='contained'
+        >
+            Open Form
+      </Button>
 
       <Modal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+       sx={{
+        position: 'absolute',
+        left: '30%',
+        top: '15%',
        
+       }}
       >
         <Form />
       </Modal>
