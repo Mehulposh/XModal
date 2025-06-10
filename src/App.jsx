@@ -23,6 +23,10 @@ function App(){
       <Modal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        sx={{
+          height: '100vh',
+          width: '100vw',
+        }}
         BackdropProps={{
           style: { cursor: 'pointer' }, // Ensure the backdrop is clickable
         }}
