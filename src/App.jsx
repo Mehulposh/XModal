@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Modal,Button} from '@mui/material';
+import {Modal,Button,Box} from '@mui/material';
 import Form from './components/Modal/FormModal';
 
 function App(){
@@ -24,14 +24,14 @@ function App(){
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         sx={{
-          height: '100vh',
-          width: '100vw',
-        }}
-        BackdropProps={{
-          style: { cursor: 'pointer' }, // Ensure the backdrop is clickable
+          '& .MuiBackdrop-root': {
+            cursor: 'pointer'
+          }
         }}
       >
-        <Form setFunction={setIsModalOpen}/>
+        <Box onClick={(e) =>  e.stopPropagation()}>
+          <Form setFunction={setIsModalOpen}/>
+        </Box>
       </Modal>
     </div>
   )
