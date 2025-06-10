@@ -23,10 +23,10 @@ function App(){
       <Modal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        disableBackdropClick={false}
-        hideBackdrop={false}
+        // disableBackdropClick={false}
+        // hideBackdrop={false}
       >
-        <Box onClick={(e) =>  e.stopPropagation()}>
+        <Box>
           <Form setFunction={setIsModalOpen}/>
         </Box>
       </Modal>
