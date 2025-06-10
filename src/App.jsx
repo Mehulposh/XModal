@@ -30,7 +30,7 @@ function App(){
        
        }}
       >
-        <Form />
+        <Form setFunction={setIsModalOpen}/>
       </Modal>
     </div>
   )

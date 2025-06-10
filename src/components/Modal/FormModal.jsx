@@ -3,13 +3,33 @@ import './Form.css';
 import { Button } from '@mui/material';
 
 
-function Form(){
+function Form({setFunction}){
     const [formData,setFormData] = useState({
         username: '',
         email: '',
         phone: '',
         dob: '',
     })
+
+    const checkEmail = (email) => {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        return emailPattern.test(email);
+    }
+
+    const checkDate = (date) => {
+        const today = new Date();
+
+        const formDate = new Date(date);
+
+        return formDate <= today;
+    }
+
+    const checkPhone = (phone) => {
+        const phonePattern = /^[0-9]{10}$/; // Ensures exactly 10 digits
+        
+        return phonePattern.test(phone);
+  };
 
     const handleChange = (e) => {
         const {name,value} = e.target;
@@ -20,12 +40,31 @@ function Form(){
         }));
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(!checkPhone(formData.phone)){
+            alert('Invalid phone number. Please enter a 10-digit phone number');
+            return false;
+        }
+
+        if(!checkEmail(formData.email)){
+            alert('Invalid email. Please check your email address.')
+            return false;
+        }
+
+        if(!checkDate(formData.dob)){
+            alert("Invalid date of birth. Date of birth cannot be in the future.");
+            return false;
+        }
+
+        setFunction(false);
+    };
 
     return(
         <div  className="modal">
             <h2>Fill Details</h2>
             <div className="modal-content">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor='username'>Username:</label>
                     <br/>
                     <input 
@@ -78,6 +117,7 @@ function Form(){
                     <Button 
                         className="submit-button"
                         variant='contained'
+                        type='submit'
                     >
                         Submit
                     </Button>
