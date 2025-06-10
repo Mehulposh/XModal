@@ -23,15 +23,9 @@ function App(){
       <Modal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-       
-       sx={{
-        height: 'max-content',
-        width: 'max-content',
-        position: 'absolute',
-        left: '30%',
-        top: '15%',
-       
-       }}
+        BackdropProps={{
+          style: { cursor: 'pointer' }, // Ensure the backdrop is clickable
+        }}
       >
         <Form setFunction={setIsModalOpen}/>
       </Modal>
