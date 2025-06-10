@@ -23,11 +23,7 @@ function App(){
       <Modal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        sx={{
-          '& .MuiBackdrop-root': {
-            cursor: 'pointer'
-          }
-        }}
+        onClick={() => setIsModalOpen(false)}
       >
         <Box onClick={(e) =>  e.stopPropagation()}>
           <Form setFunction={setIsModalOpen}/>
