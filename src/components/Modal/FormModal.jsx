@@ -12,11 +12,11 @@ function Form(){
     })
 
     const handleChange = (e) => {
-        const {key,value} = e.target;
+        const {name,value} = e.target;
 
         setFormData(prev => ({
             ...prev,
-            [key]: value,
+            [name]: value,
         }));
     };
 
@@ -26,7 +26,7 @@ function Form(){
             <h2>Fill Details</h2>
             <div className="modal-content">
                 <form>
-                    <label htmlFor='username'>UserName:</label>
+                    <label htmlFor='username'>Username:</label>
                     <br/>
                     <input 
                         type="text"
@@ -38,7 +38,7 @@ function Form(){
                     />
                     <br/>
                     <br/>
-                    <label htmlFor='email'>Email:</label>
+                    <label htmlFor='email'>Email Address:</label>
                     <br/>
                     <input 
                         type="email"
@@ -51,7 +51,7 @@ function Form(){
                     <br/>
                     <br/>
                     
-                    <label htmlFor='phone'>Phone:</label>
+                    <label htmlFor='phone'>Phone Number:</label>
                     <br/>
                     <input 
                         type="tel"
