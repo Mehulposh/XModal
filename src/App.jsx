@@ -23,8 +23,10 @@ function App(){
       <Modal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        disableBackdropClick={true}
+       
        sx={{
+        height: 'max-content',
+        width: 'max-content',
         position: 'absolute',
         left: '30%',
         top: '15%',
